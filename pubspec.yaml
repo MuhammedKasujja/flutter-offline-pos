@@ -43,6 +43,7 @@ dependencies:
   formz: ^0.7.0
   uuid: ^4.4.0
   flutter_switch: ^0.3.2
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

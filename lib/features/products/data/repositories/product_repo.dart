@@ -1,0 +1,217 @@
+
+
+import 'package:offline_kalteck_pos/core/infra.dart';
+
+import '../../domain/repositories/product_repo.dart';
+import '../models/product_model.dart';
+
+class ProductsRepositoryImp extends ProductsRepository {
+  @override
+  Future<ApiResponse<List<Product>>> fetchProducts() async {
+    await Future.delayed(const Duration(seconds: 10));
+    return ApiResponse.success(_products);
+  }
+}
+
+final List<Product> _products = [
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+  const Product(
+    id: '5467890',
+    name: 'Tools',
+    sellingPrice: 5600,
+    costPrice: 4000,
+    total: 45,
+    totalItemsRemaining: 30,
+  ),
+];
