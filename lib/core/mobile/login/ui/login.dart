@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:offline_kalteck_pos/core/mobile/home/ui/product_list_home.dart';
-import 'package:offline_kalteck_pos/core/service/login/api/verify_instance_service.dart';
 import 'package:offline_kalteck_pos/database/db_utils/db_instance_url.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -83,17 +82,8 @@ class _LoginState extends State<Login> {
         //  child:
         WillPopScope(
             onWillPop: () async {
-              CommanResponse res = await VerificationUrl.checkAppStatus();
-              if (res.message == true) {
-                _onBackPressed();
-                return true;
-              } else {
-                if (!mounted) return true;
-                Helper.showPopup(
-                    context, "Please update your app to latest version",
-                    barrierDismissible: true);
-                return false;
-              }
+              _onBackPressed();
+              return true;
             },
             child: Scaffold(
               resizeToAvoidBottomInset: true,

@@ -9,8 +9,6 @@ import '../../../../../database/db_utils/db_parked_order.dart';
 import '../../../../../database/models/park_order.dart';
 import '../../../../../utils/ui_utils/spacer_widget.dart';
 import '../../../../../widgets/shimmer_widget.dart';
-import '../../../network/api_helper/comman_response.dart';
-import '../../service/login/api/verify_instance_service.dart';
 import '../widget/title_search_bar.dart';
 import 'parked_data_item_landscape.dart';
 
@@ -31,15 +29,13 @@ class _OrderListParkedLandscapeState extends State<OrderListParkedLandscape> {
   late bool fetchingData;
 
   @override
-  void initState() {   verify();
+  void initState() {
     fetchingData = true;
     searchCtrl = TextEditingController();
     super.initState();
     getParkedOrders();
   }
 
-
-  
   final FocusNode _focusNode = FocusNode();
 
   @override
@@ -54,42 +50,46 @@ class _OrderListParkedLandscapeState extends State<OrderListParkedLandscape> {
       _focusNode.unfocus();
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(10),
-        child:GestureDetector (onTap: _handleTap,child: Column(
-          children: [
-            TitleAndSearchBar(focusNode: _focusNode,
-              inputFormatter: [FilteringTextInputFormatter.digitsOnly],
-              title: "Parked Orders",
-              onSubmit: (text) {
-                if (text.length >= 3) {
-                  _filterProductsCategories(text);
-                } else {
-                  getParkedOrders();
-                }
-              },
-              onTextChanged: (changedtext) {
-                if (changedtext.length >= 3) {
-                  _filterProductsCategories(changedtext);
-                } else {
-                  getParkedOrders();
-                }
-              },
-              searchCtrl: searchCtrl,
-              searchHint: "Enter customer mobile number",
-            ),
-            hightSpacer20,
-            parkedOrders.isEmpty
-                ? const Center(
-                    child: Text("No order found ",
-                        style: TextStyle(fontWeight: FontWeight.bold)))
-                : Expanded(
-                    child: productGrid(),
-                  ),
-          ],
-        )));
+        child: GestureDetector(
+            onTap: _handleTap,
+            child: Column(
+              children: [
+                TitleAndSearchBar(
+                  focusNode: _focusNode,
+                  inputFormatter: [FilteringTextInputFormatter.digitsOnly],
+                  title: "Parked Orders",
+                  onSubmit: (text) {
+                    if (text.length >= 3) {
+                      _filterProductsCategories(text);
+                    } else {
+                      getParkedOrders();
+                    }
+                  },
+                  onTextChanged: (changedtext) {
+                    if (changedtext.length >= 3) {
+                      _filterProductsCategories(changedtext);
+                    } else {
+                      getParkedOrders();
+                    }
+                  },
+                  searchCtrl: searchCtrl,
+                  searchHint: "Enter customer mobile number",
+                ),
+                hightSpacer20,
+                parkedOrders.isEmpty
+                    ? const Center(
+                        child: Text("No order found ",
+                            style: TextStyle(fontWeight: FontWeight.bold)))
+                    : Expanded(
+                        child: productGrid(),
+                      ),
+              ],
+            )));
   }
 
   Widget productGrid() {
@@ -149,12 +149,5 @@ class _OrderListParkedLandscapeState extends State<OrderListParkedLandscape> {
         .toList();
 
     setState(() {});
-  }verify() async {
-    CommanResponse res = await VerificationUrl.checkAppStatus();
-    if (res.message == true) {
-    } else {
-      Helper.showPopup(context, "Please update your app to latest version",
-          barrierDismissible: true);
-    }
   }
 }

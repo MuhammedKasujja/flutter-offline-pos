@@ -22,13 +22,11 @@ import '../../../../database/models/hub_manager.dart';
 import '../../../../database/models/order_item.dart';
 import '../../../../database/models/park_order.dart';
 import '../../../../database/models/product.dart';
-import '../../../../network/api_helper/comman_response.dart';
 import '../../../../utils/helper.dart';
 import '../../../../utils/ui_utils/padding_margin.dart';
 import '../../../../utils/ui_utils/spacer_widget.dart';
 import '../../../../utils/ui_utils/text_styles/custom_text_style.dart';
 import '../../../../widgets/item_options.dart';
-import '../../../service/login/api/verify_instance_service.dart';
 import '../../customers/ui/customers.dart';
 import '../../select_customer/ui/new_select_customer.dart';
 import '../../transaction_history/view/transaction_screen.dart';
@@ -801,14 +799,8 @@ class _ProductListHomeState extends State<ProductListHome> {
   }
 
   verify() async {
-    CommanResponse res = await VerificationUrl.checkAppStatus();
-    if (res.message == true) {
-      _getManagerName();
-      getProducts();
-    } else {
-      Helper.showPopup(context, "Please update your app to latest version",
-          barrierDismissible: true);
-    }
+    _getManagerName();
+    getProducts();
   }
 
   _openItemDetailDialog(BuildContext context, OrderItem product) async {

@@ -15,9 +15,7 @@ import '../../../../../utils/ui_utils/padding_margin.dart';
 import '../../../../../utils/ui_utils/spacer_widget.dart';
 import '../../../../../utils/ui_utils/text_styles/custom_text_style.dart';
 import '../../../database/models/order_item.dart';
-import '../../../network/api_helper/comman_response.dart';
 import '../../../widgets/item_options.dart';
-import '../../service/login/api/verify_instance_service.dart';
 import '../widget/create_customer_popup.dart';
 import '../widget/select_customer_popup.dart';
 import '../widget/title_search_bar.dart';
@@ -46,7 +44,6 @@ class _CreateOrderLandscapeState extends State<CreateOrderLandscape> {
     items = [];
     searchCtrl = TextEditingController();
     super.initState();
-    verify();
     getProducts();
     if (Helper.activeParkedOrder != null) {
       log("park order is active");
@@ -500,14 +497,5 @@ class _CreateOrderLandscapeState extends State<CreateOrderLandscape> {
         .toList();
 
     setState(() {});
-  }
-
-  verify() async {
-    CommanResponse res = await VerificationUrl.checkAppStatus();
-    if (res.message == true) {
-    } else {
-      Helper.showPopup(context, "Please update your app to latest version",
-          barrierDismissible: true);
-    }
   }
 }

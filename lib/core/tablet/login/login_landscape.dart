@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:offline_kalteck_pos/core/service/login/api/verify_instance_service.dart';
 
 import '../../../../../configs/theme_config.dart';
 import '../../../../../constants/app_constants.dart';
@@ -104,8 +103,7 @@ class _LoginLandscapeState extends State<LoginLandscape> {
       Helper.showLoaderDialog(context);
 
       ///
-      CommanResponse res = await VerificationUrl.checkAppStatus();
-if(res.message==true){
+
       CommanResponse response = await LoginService.login(email, password, url);
 
       if (response.status!) {
@@ -113,24 +111,19 @@ if(res.message==true){
         // await addDataIntoDB();
         if (!mounted) return;
         Helper.hideLoader(ctx);
-    
+
         Get.offAll(() => HomeTablet());
       } else {
         if (!mounted) return;
         Helper.hideLoader(ctx);
         Helper.showPopup(ctx, response.message!);
-      }}
-      else{
-    Helper.showPopup(context, "Please update your app to latest version",
-            barrierDismissible: true);
       }
     } catch (e) {
       Helper.hideLoader(ctx);
       log('Exception Caught :: $e');
       Helper.showSnackBar(context, SOMETHING_WRONG);
-    }}
-  
-
+    }
+  }
 
   /// HANDLE BACK BTN PRESS ON LOGIN SCREEN
   Future<bool> _onBackPressed() async {
@@ -258,16 +251,12 @@ if(res.message==true){
                 TextSpan(
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                       
-                          Navigator.push(
-                              ctx,
-                              MaterialPageRoute(
-                                  builder: (context) => WebViewScreen(
-                                      topicTypes:
-                                          TopicTypes.TERMS_AND_CONDITIONS,
-                                      apiUrl:
-                                          "https://${_urlCtrl.text}/api/")));
-                       
+                        Navigator.push(
+                            ctx,
+                            MaterialPageRoute(
+                                builder: (context) => WebViewScreen(
+                                    topicTypes: TopicTypes.TERMS_AND_CONDITIONS,
+                                    apiUrl: "https://${_urlCtrl.text}/api/")));
                       },
                     text: TERMS_CONDITIONS,
                     style: getTextStyle(
@@ -283,7 +272,7 @@ if(res.message==true){
                 TextSpan(
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                     {
+                        {
                           Navigator.push(
                               ctx,
                               MaterialPageRoute(
@@ -291,7 +280,7 @@ if(res.message==true){
                                       topicTypes: TopicTypes.PRIVACY_POLICY,
                                       apiUrl:
                                           "https://${_urlCtrl.text}/api/")));
-                        } 
+                        }
                       },
                     text: PRIVACY_POLICY,
                     style: getTextStyle(
@@ -320,7 +309,7 @@ if(res.message==true){
       );
 
   ///Method to check whether the API URL is correct.
- /* bool isValidInstanceUrl() {
+  /* bool isValidInstanceUrl() {
     String url = "https://${_urlCtrl.text}/api/";
     return Helper.isValidUrl(url);
   }*/
