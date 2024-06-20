@@ -1,0 +1,70 @@
+name: offline_kalteck_pos
+description: "offline point of sale"
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_launcher_icons: ^0.9.3
+  google_fonts: ^4.0.3
+  flutter_svg: ^2.0.10+1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  http: ^1.2.0
+  path_provider: ^2.1.3
+  flutter_device_type: ^0.4.0
+  get: ^4.6.6
+  intl: ^0.19.0
+  flutter_bloc: ^8.1.6
+  bloc_concurrency: ^0.2.5
+  stream_transform: ^2.1.0
+  equatable: ^2.0.5
+  connectivity_plus: ^6.0.3
+  shimmer: ^3.0.0
+  webview_flutter: ^4.5.0
+  infinite_scroll_pagination: ^4.0.0
+  package_info_plus: ^5.0.1
+  flutter_expandable_fab: ^1.6.1
+  showcaseview: ^3.0.0
+  esc_pos_printer: ^4.1.0
+  esc_pos_utils: ^1.1.0
+  qr_flutter: ^4.1.0
+  lottie: ^3.1.2
+  bloc: ^8.1.4
+  pluto_grid: ^8.0.0
+  fluttertoast: ^8.2.5
+  formz: ^0.7.0
+  uuid: ^4.4.0
+  flutter_switch: ^0.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  msix: ^3.7.0
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.9
+
+# adding app icons.
+flutter_icons:
+  image_path_android: "assets/app_icon/app_icon.png"
+  image_path_ios: "assets/app_icon/app_icon.png"
+  android: true
+  ios: true
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/tablet_icons/
