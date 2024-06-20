@@ -12,7 +12,7 @@ class ForgotPasswordApi {
       return CommanResponse(status: false, message: INVALID_URL);
     }*/
 
-    if (!isValidEmail(email)) {
+    if (Helper.isValidEmail(email)) {
       //Return the email validation failed Response
       return CommanResponse(status: false, message: INVALID_EMAIL);
     }
@@ -44,21 +44,5 @@ class ForgotPasswordApi {
           message: NO_INTERNET,
           apiStatus: ApiStatus.NO_INTERNET);
     }
-  }
-
-  ///Function to check whether the input URL is valid or not
-  static bool _isvalidUrl(String url) {
-    // Regex to check valid URL
-    String regex =
-        "((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)";
-
-    return RegExp(regex).hasMatch(url);
-  }
-
-  ///Function to check whether email is in correct format or not.
-  static bool isValidEmail(String email) {
-    return RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
   }
 }

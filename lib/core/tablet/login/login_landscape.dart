@@ -104,7 +104,7 @@ class _LoginLandscapeState extends State<LoginLandscape> {
 
       ///
 
-      CommanResponse response = await LoginService.login(email, password, url);
+      CommanResponse response = await LoginService.login(email, password);
 
       if (response.status!) {
         //Adding static data into the database

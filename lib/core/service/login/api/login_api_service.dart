@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import '../../../../../constants/app_constants.dart';
 import '../../../../../database/db_utils/db_constants.dart';
 import '../../../../../database/db_utils/db_preferences.dart';
@@ -13,13 +11,8 @@ import '../../../../database/db_utils/db_instance_url.dart';
 import '../model/login_response.dart';
 
 class LoginService {
-  static Future<CommanResponse> login(
-      String email, String password, String url) async {
-  /*  if (!_isValidUrl(url)) {
-      return CommanResponse(status: false, message: INVALID_URL);
-    }*/
-
-    if (!isValidEmail(email)) {
+  static Future<CommanResponse> login(String email, String password) async {
+    if (Helper.isValidEmail(email)) {
       //Return the email validation failed Response
       return CommanResponse(status: false, message: INVALID_EMAIL);
     }
@@ -31,11 +24,9 @@ class LoginService {
 
     //Check for the internet connection
     var isInternetAvailable = await Helper.isNetworkAvailable();
-
+    String url = "https://pos.kaltech/api/";
+    await DbInstanceUrl().deleteUrl();
     await DbInstanceUrl().saveUrl(url);
-    String savedUrl = await DbInstanceUrl().getUrl();
-    log('Saved URL :: $savedUrl');
-    instanceUrl = url;
 
     if (isInternetAvailable) {
       //Login api url from api_constants
@@ -87,13 +78,6 @@ class LoginService {
     }
   }
 
-  ///Function to check whether email is in correct format or not.
-  static bool isValidEmail(String email) {
-    return RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
-  }
-
   ///Function to check whether password is in correct format or not.
   static bool isValidPassword(String password) {
     String regex =
@@ -101,12 +85,4 @@ class LoginService {
     return RegExp(regex).hasMatch(regex);
   }
 
-  ///Function to check whether the input URL is valid or not
-  static bool _isValidUrl(String url) {
-    // Regex to check valid URL
-    String regex =
-        "((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)";
-
-    return RegExp(regex).hasMatch(url);
-  }
 }

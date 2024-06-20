@@ -49,6 +49,12 @@ class Helper {
     return totalAmount;
   }
 
+  static bool isValidEmail(String email) {
+    return RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+  }
+
   ///Function to check internet connectivity in app.
   static Future<bool> isNetworkAvailable() async {
     //Checking for the connectivity
@@ -174,7 +180,7 @@ class Helper {
   static Future showConfirmationPopup(
       BuildContext context, String message, String btnTxt,
       {bool hasCancelAction = false}) async {
-    var popup = await showGeneralDialog(
+    final popup = await showGeneralDialog(
         context: context,
         transitionBuilder: (context, animation, secondaryAnimation, child) {
           return FadeTransition(

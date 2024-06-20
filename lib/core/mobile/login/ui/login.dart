@@ -1,12 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:offline_kalteck_pos/core/mobile/home/ui/product_list_home.dart';
-import 'package:offline_kalteck_pos/database/db_utils/db_instance_url.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../../../configs/theme_config.dart';
 import '../../../../../constants/app_constants.dart';
-import '../../../../../network/api_helper/comman_response.dart';
 import '../../../../../utils/helper.dart';
 import '../../../../../utils/ui_utils/padding_margin.dart';
 import '../../../../../utils/ui_utils/spacer_widget.dart';
@@ -118,7 +116,7 @@ class _LoginState extends State<Login> {
   }
 
   /// HANDLE LOGIN BTN ACTION
-  Future<void> login(String email, String password, String url) async {
+  Future<void> login(String email, String password) async {
     {
       if (email.isEmpty) {
         Helper.showPopup(context, "Please enter email");
@@ -127,9 +125,7 @@ class _LoginState extends State<Login> {
       } else {
         try {
           Helper.showLoaderDialog(context);
-          CommanResponse response =
-              await LoginService.login(email, password, url);
-          print(response);
+          final response = await LoginService.login(email, password);
 
           if (response.status!) {
             //Adding static data into the database
@@ -166,9 +162,7 @@ class _LoginState extends State<Login> {
   Widget loginBtnWidget(context) => Center(
         child: ButtonWidget(
           onPressed: () async {
-            await DbInstanceUrl().deleteUrl();
-            String url = "https://pos.kaltech/api/";
-            await login(_emailCtrl.text, _passCtrl.text, url);
+            await login(_emailCtrl.text, _passCtrl.text);
           },
           title: LOGIN_TXT,
           colorBG: MAIN_COLOR,
