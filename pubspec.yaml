@@ -52,6 +52,7 @@ dev_dependencies:
   msix: ^3.7.0
   hive_generator: ^2.0.1
   build_runner: ^2.4.9
+  flutter_gen_runner:
 
 # adding app icons.
 flutter_icons:
