@@ -13,15 +13,7 @@ import 'constants/app_constants.dart';
 import 'core/mobile/splash/view/splash_screen.dart';
 import 'core/tablet/home_tablet.dart';
 import 'database/db_utils/db_hub_manager.dart';
-import 'database/models/attribute.dart';
-import 'database/models/category.dart';
-import 'database/models/customer.dart';
-import 'database/models/hub_manager.dart';
-import 'database/models/option.dart';
-import 'database/models/order_item.dart';
-import 'database/models/park_order.dart';
-import 'database/models/product.dart';
-import 'database/models/sale_order.dart';
+import 'database/models/models.dart';
 import 'utils/helpers/sync_helper.dart';
 
 bool isUserLoggedIn = false;

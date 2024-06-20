@@ -6,8 +6,6 @@ import '../database/models/customer.dart';
 import '../utils/ui_utils/card_border_shape.dart';
 import '../utils/ui_utils/text_styles/custom_text_style.dart';
 
-typedef OnCheckChangedCallback = void Function(bool isChanged);
-
 // ignore: must_be_immutable
 class CommanTileOptions extends StatefulWidget {
   bool? isCheckBoxEnabled;
